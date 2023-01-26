@@ -1,2 +1,2 @@
-# Config-Less
+# gulp-less-config
 ##### Seja bem-vindo ao meu projeto! Estou usando o gerenciador de tarefas Gulp para automatizar meu fluxo de trabalho de desenvolvimento web. Isso inclui a compilação de meus arquivos LESS em CSS. Com o Gulp, posso facilmente garantir que todos meus arquivos LESS sejam convertidos corretamente e minificados para produção. Além disso, o Gulp me permite criar facilmente tarefas personalizadas para atender minhas necessidades específicas. Isso me permite trabalhar de forma mais eficiente e manter meu código limpo e organizado. Se você tiver alguma dúvida sobre como configurar ou usar o Gulp com LESS em seu próprio projeto, não hesite em me perguntar. Estou sempre disposto a ajudar!

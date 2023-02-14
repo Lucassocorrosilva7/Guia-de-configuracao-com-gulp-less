@@ -42,10 +42,40 @@ Agora, você precisa criar um arquivo gulpfile.js na raiz do seu projeto e adici
 
 ```
 const { src, dest, watch, series } = require("gulp");
+```
+
+## Esta é a sintaxe para importar módulos do Gulp para o seu arquivo de configuração. Aqui, estamos importando quatro módulos:
+
+- src: É uma função que especifica o local dos arquivos de origem. Você pode usá-lo para selecionar todos os arquivos LESS que deseja compilar.
+
+- dest: É uma função que especifica o local onde você deseja salvar os arquivos compilados.
+
+- watch: É uma função que monitora as alterações em seus arquivos de origem e executa uma tarefa específica sempre que algum arquivo for alterado.
+
+- series: É uma função que permite executar várias tarefas em série, ou seja, uma tarefa após a outra.
+
+Ao importar esses módulos, você está disponibilizando as funcionalidades do Gulp para o seu arquivo de configuração, permitindo automatizar várias tarefas em seu fluxo de trabalho.
+
+```
 const less = require("gulp-less");
 const postcss = require("gulp-postcss");
 const autoprefixer = require("autoprefixer");
 const sourcemaps = require("gulp-sourcemaps");
+```
+
+## Esta é a sintaxe para importar os plugins necessários para o seu processo de compilação de LESS. Aqui, estamos importando quatro plugins:
+
+- gulp-less: Este plugin permite compilar o seu código LESS em CSS.
+
+- gulp-postcss: Este plugin permite aplicar vários plugins PostCSS em seus arquivos CSS, como o autoprefixer.
+
+- autoprefixer: Este plugin permite adicionar prefixos automaticamente aos seus estilos CSS para garantir a compatibilidade com vários navegadores.
+
+- gulp-sourcemaps: Este plugin permite gerar mapas de origem para seus arquivos CSS, permitindo depurar seus estilos mais facilmente.
+
+Ao importar esses plugins, você está disponibilizando suas funcionalidades para o seu processo de compilação de LESS, o que torna o processo mais eficiente e personalizável.
+
+```
 
 function css(done) {
   src("src/less/app.less")
@@ -53,7 +83,7 @@ function css(done) {
     .pipe(less())
     .pipe(postcss([autoprefixer()]))
     .pipe(sourcemaps.write("."))
-    .pipe(dest("public/build/css"));
+    .pipe(dest("build/css"));
 
   done();
 }
@@ -63,10 +93,41 @@ function dev(done) {
   done();
 }
 
+```
+
+## Esta é uma função Gulp que define as tarefas para compilar seus arquivos LESS em CSS e monitorar as alterações nos arquivos LESS.
+
+A função css realiza as seguintes etapas:
+
+- src("src/less/app.less"): Este é o arquivo de entrada para o processo de compilação, ou seja, o arquivo LESS que você deseja compilar em CSS.
+
+- .pipe(sourcemaps.init()): Inicia a geração de mapas de origem para o seu arquivo CSS.
+
+- .pipe(less()): Compila o arquivo LESS em CSS.
+
+- .pipe(postcss([autoprefixer()])): Aplica o autoprefixer ao seu arquivo CSS.
+
+- .pipe(sourcemaps.write(".")): Escreve os mapas de origem para o seu arquivo CSS.
+
+- .pipe(dest("build/css")): Especifica o diretório de destino para o arquivo CSS compilado.
+
+A função dev é responsável por monitorar as alterações nos arquivos LESS. Quando houver uma alteração, a função css é executada automaticamente.
+
+Essas funções são as tarefas básicas para compilar seu arquivo LESS em CSS e monitorar as alterações. Você pode expandir essas funções e adicionar outras tarefas adicionais para personalizar seu processo de compilação.
+
+```
 exports.css = css;
 exports.dev = dev;
 exports.default = series(css);
 ```
+
+## Este trecho de código exporta as tarefas que você definiu anteriormente como css e dev. Isso significa que elas podem ser acessadas em outros arquivos e scripts.
+
+- A exportação exports.css = css; significa que a tarefa css pode ser acessada como gulp css.
+
+- A exportação exports.dev = dev; significa que a tarefa dev pode ser acessada como gulp dev.
+
+- A exportação exports.default = series(css); significa que a tarefa padrão será a tarefa css e que será executada quando você digitar gulp sem especificar nenhuma tarefa.
 
 ## Execução do Gulp
 
@@ -80,4 +141,4 @@ Este comando irá compilar seus arquivos LESS e gerar um arquivo CSS compilado, 
 
 ## Referências adicionais
 
-Para obter mais informações sobre o Gulp e seus plug-ins, você pode consultar a documentação oficial em [Gulpks](https://gulpjs.com/).
+Para obter mais informações sobre o Gulp e seus plug-ins, você pode consultar a documentação oficial em [Gulpjs](https://gulpjs.com/).

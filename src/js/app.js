@@ -1,1 +1,0 @@
-alert("Usando less");
